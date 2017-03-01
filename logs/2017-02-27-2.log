@@ -1,0 +1,16 @@
+[03:39:14] [Server thread/INFO]: Starting minecraft server version 1.11.2
+[03:39:17] [Server thread/INFO]: Loading properties
+[03:39:17] [Server thread/INFO]: Default game type: SURVIVAL
+[03:39:17] [Server thread/INFO]: Generating keypair
+[03:39:18] [Server thread/INFO]: Starting Minecraft server on 119.192.172.208:25565
+[03:39:18] [Server thread/INFO]: Using default channel type
+[03:39:18] [Server thread/INFO]: Preparing level "world"
+[03:39:19] [Server thread/INFO]: Preparing start region for level 0 (world)
+[03:39:20] [Server thread/INFO]: Preparing spawn area: 20%
+[03:39:22] [Server thread/INFO]: Preparing start region for level 0 (world)
+[03:39:22] [Server thread/INFO]: Done (3.843s)! For help, type "help" or "?"
+[03:40:21] [User Authenticator #1/INFO]: UUID of player Bamtoll09 is 40e7b6ef-fd2b-4474-88f1-d50f17e85922
+[03:40:22] [Server thread/INFO]: Bamtoll09[/119.192.172.208:6911] logged in with entity id 214 in world(0) at (172.5913755482987, 123.0, -75.14199095717714)
+[03:40:22] [Server thread/INFO]: Bamtoll09 joined the game
+[03:40:35] [Server thread/INFO]: Bamtoll09 lost connection: Disconnected
+[03:40:35] [Server thread/INFO]: Bamtoll09 left the game

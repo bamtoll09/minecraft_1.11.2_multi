@@ -1,0 +1,332 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  SpongeCoremod (spongeforge-1.11.2-2227-6.0.0-BETA-2176.jar)
+Contact their authors BEFORE contacting forge
+
+// Everything's going to plan. No, really, that was supposed to happen.
+
+Time: 17. 2. 28 ¿ÀÈÄ 8:41
+Description: Watching Server
+
+java.lang.Error
+	at java.util.concurrent.ConcurrentHashMap.get(Unknown Source)
+	at net.minecraftforge.common.chunkio.ChunkIOExecutor.queueChunkLoad(ChunkIOExecutor.java:102)
+	at net.minecraft.world.gen.ChunkProviderServer.loadChunk(ChunkProviderServer.java:123)
+	at net.minecraft.server.management.PlayerChunkMapEntry.redirect$onLoadChunk$zpb000(PlayerChunkMapEntry.java:1059)
+	at net.minecraft.server.management.PlayerChunkMapEntry.<init>(PlayerChunkMapEntry.java:49)
+	at net.minecraft.server.management.PlayerChunkMap.func_187302_c(SourceFile:196)
+	at net.minecraft.server.management.PlayerChunkMap.func_72683_a(SourceFile:227)
+	at net.minecraft.server.management.PlayerList.func_72375_a(PlayerList.java:285)
+	at net.minecraft.server.management.PlayerList.transferPlayerToDimension(PlayerList.java:1837)
+	at org.spongepowered.common.entity.EntityUtil.teleportPlayerToDimension(EntityUtil.java:246)
+	at net.minecraft.entity.player.EntityPlayerMP.func_184204_a(EntityPlayerMP.java:4182)
+	at net.minecraft.entity.Entity.func_70030_z(Entity.java:427)
+	at net.minecraft.entity.EntityLivingBase.func_70030_z(EntityLivingBase.java:222)
+	at net.minecraft.entity.Entity.func_70071_h_(Entity.java:374)
+	at net.minecraft.entity.EntityLivingBase.func_70071_h_(EntityLivingBase.java:2003)
+	at net.minecraft.entity.player.EntityPlayer.func_70071_h_(EntityPlayer.java:232)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:329)
+	at net.minecraft.network.NetHandlerPlayServer.redirect$onPlayerTick$zgn000(NetHandlerPlayServer.java:1961)
+	at net.minecraft.network.NetHandlerPlayServer.func_73660_a(NetHandlerPlayServer.java:164)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java:215)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:287)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:743)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:384)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:624)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:482)
+	at java.lang.Thread.run(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at java.util.concurrent.ConcurrentHashMap.get(Unknown Source)
+	at net.minecraftforge.common.chunkio.ChunkIOExecutor.queueChunkLoad(ChunkIOExecutor.java:102)
+	at net.minecraft.world.gen.ChunkProviderServer.loadChunk(ChunkProviderServer.java:123)
+	at net.minecraft.server.management.PlayerChunkMapEntry.redirect$onLoadChunk$zpb000(PlayerChunkMapEntry.java:1059)
+	at net.minecraft.server.management.PlayerChunkMapEntry.<init>(PlayerChunkMapEntry.java:49)
+	at net.minecraft.server.management.PlayerChunkMap.func_187302_c(SourceFile:196)
+	at net.minecraft.server.management.PlayerChunkMap.func_72683_a(SourceFile:227)
+	at net.minecraft.server.management.PlayerList.func_72375_a(PlayerList.java:285)
+	at net.minecraft.server.management.PlayerList.transferPlayerToDimension(PlayerList.java:1837)
+	at org.spongepowered.common.entity.EntityUtil.teleportPlayerToDimension(EntityUtil.java:246)
+	at net.minecraft.entity.player.EntityPlayerMP.func_184204_a(EntityPlayerMP.java:4182)
+	at net.minecraft.entity.Entity.func_70030_z(Entity.java:427)
+	at net.minecraft.entity.EntityLivingBase.func_70030_z(EntityLivingBase.java:222)
+	at net.minecraft.entity.Entity.func_70071_h_(Entity.java:374)
+	at net.minecraft.entity.EntityLivingBase.func_70071_h_(EntityLivingBase.java:2003)
+	at net.minecraft.entity.player.EntityPlayer.func_70071_h_(EntityPlayer.java:232)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:329)
+	at net.minecraft.network.NetHandlerPlayServer.redirect$onPlayerTick$zgn000(NetHandlerPlayServer.java:1961)
+	at net.minecraft.network.NetHandlerPlayServer.func_73660_a(NetHandlerPlayServer.java:164)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java:215)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:287)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:743)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:384)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:624)
+
+-- Thread Dump --
+Details:
+	Threads: "Netty Server IO #7" Id=31 RUNNABLE (in native)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl.doSelect(Unknown Source)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@43a7cf15
+	-  locked java.util.Collections$UnmodifiableSet@4d603911
+	-  locked sun.nio.ch.WindowsSelectorImpl@7698c877
+	at sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:622)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:310)
+	...
+
+
+"Netty Server IO #6" Id=30 RUNNABLE (in native)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl.doSelect(Unknown Source)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@495fa465
+	-  locked java.util.Collections$UnmodifiableSet@c5d332a
+	-  locked sun.nio.ch.WindowsSelectorImpl@76b3460e
+	at sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:622)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:310)
+	...
+
+
+"Netty Server IO #5" Id=29 RUNNABLE
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.apache.logging.log4j.core.impl.Log4jLogEvent.<init>(Log4jLogEvent.java:114)
+	at org.apache.logging.log4j.core.impl.Log4jLogEvent.<init>(Log4jLogEvent.java:90)
+	at org.apache.logging.log4j.core.impl.DefaultLogEventFactory.createEvent(DefaultLogEventFactory.java:49)
+	at org.apache.logging.log4j.core.config.LoggerConfig.log(LoggerConfig.java:365)
+	at org.apache.logging.log4j.core.Logger.log(Logger.java:110)
+	at org.apache.logging.log4j.spi.AbstractLoggerWrapper.log(AbstractLoggerWrapper.java:55)
+	at org.slf4j.impl.SLF4JLogger.warn(SLF4JLogger.java:340)
+	...
+
+
+"Netty Server IO #4" Id=28 RUNNABLE (in native)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl.doSelect(Unknown Source)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@71ff9ad3
+	-  locked java.util.Collections$UnmodifiableSet@3d9b9d4c
+	-  locked sun.nio.ch.WindowsSelectorImpl@2b3fd4ab
+	at sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:622)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:310)
+	...
+
+
+"Netty Server IO #3" Id=27 RUNNABLE
+	at net.minecraft.network.NettyVarint21FrameDecoder.decode(SourceFile:14)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeLast(ByteToMessageDecoder.java:304)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelInactive(ByteToMessageDecoder.java:208)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:233)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:219)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelInactive(ChannelInboundHandlerAdapter.java:75)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:233)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:219)
+	...
+
+
+"Sponge - Async Light Thread" Id=40 RUNNABLE
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Chunk I/O Executor Thread-1" Id=39 WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@9d36a16
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@9d36a16
+	at java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+	at java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Netty Server IO #2" Id=26 RUNNABLE (in native)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl.doSelect(Unknown Source)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@6c72cc65
+	-  locked java.util.Collections$UnmodifiableSet@6156ea3a
+	-  locked sun.nio.ch.WindowsSelectorImpl@6dffb3e7
+	at sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:622)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:310)
+	...
+
+
+"Netty Server IO #1" Id=25 RUNNABLE (in native)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(Unknown Source)
+	at sun.nio.ch.WindowsSelectorImpl.doSelect(Unknown Source)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@c66aa1
+	-  locked java.util.Collections$UnmodifiableSet@12d72375
+	-  locked sun.nio.ch.WindowsSelectorImpl@2e7c79b7
+	at sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:622)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:310)
+	...
+
+
+"File IO Thread" Id=35 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at net.minecraft.world.storage.ThreadedFileIOBase.func_75736_b(SourceFile:51)
+	at net.minecraft.world.storage.ThreadedFileIOBase.run(SourceFile:30)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Sponge Async Scheduler Thread" Id=34 TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@683cd4ae
+	at sun.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@683cd4ae
+	at java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+	at org.spongepowered.common.scheduler.AsyncScheduler.preTick(AsyncScheduler.java:112)
+	at org.spongepowered.common.scheduler.SchedulerBase.runTick(SchedulerBase.java:105)
+	at org.spongepowered.common.scheduler.AsyncScheduler.mainLoop(AsyncScheduler.java:66)
+	at org.spongepowered.common.scheduler.AsyncScheduler$$Lambda$348/1807045481.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Server Watchdog" Id=33 RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at net.minecraft.server.dedicated.ServerHangWatchdog.run(ServerHangWatchdog.java:46)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Netty Server IO #0" Id=24 RUNNABLE
+	at sun.nio.ch.ServerSocketChannelImpl.accept0(Native Method)
+	at sun.nio.ch.ServerSocketChannelImpl.accept(Unknown Source)
+	at sun.nio.ch.ServerSocketChannelImpl.accept(Unknown Source)
+	-  locked java.lang.Object@3eedf4a9
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doReadMessages(NioServerSocketChannel.java:135)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:68)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:511)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:468)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:382)
+	...
+
+
+"Server console handler" Id=20 RUNNABLE (in native)
+	at org.fusesource.jansi.internal.Kernel32.ReadConsoleInputW(Native Method)
+	at org.fusesource.jansi.internal.Kernel32.readConsoleInputHelper(Kernel32.java:761)
+	at org.fusesource.jansi.internal.Kernel32.readConsoleKeyInput(Kernel32.java:794)
+	at org.fusesource.jansi.internal.WindowsSupport.readConsoleInput(WindowsSupport.java:97)
+	at jline.WindowsTerminal.readConsoleInput(WindowsTerminal.java:214)
+	at jline.WindowsTerminal.access$000(WindowsTerminal.java:54)
+	at jline.WindowsTerminal$1.read(WindowsTerminal.java:156)
+	at jline.internal.NonBlockingInputStream.read(NonBlockingInputStream.java:166)
+	-  locked jline.internal.NonBlockingInputStream@dcd02b7
+	...
+
+
+"DestroyJavaVM" Id=19 RUNNABLE
+
+
+"Server thread" Id=17 RUNNABLE
+	at java.util.concurrent.ConcurrentHashMap.get(Unknown Source)
+	at net.minecraftforge.common.chunkio.ChunkIOExecutor.queueChunkLoad(ChunkIOExecutor.java:102)
+	at net.minecraft.world.gen.ChunkProviderServer.loadChunk(ChunkProviderServer.java:123)
+	at net.minecraft.server.management.PlayerChunkMapEntry.redirect$onLoadChunk$zpb000(PlayerChunkMapEntry.java:1059)
+	at net.minecraft.server.management.PlayerChunkMapEntry.<init>(PlayerChunkMapEntry.java:49)
+	at net.minecraft.server.management.PlayerChunkMap.func_187302_c(SourceFile:196)
+	at net.minecraft.server.management.PlayerChunkMap.func_72683_a(SourceFile:227)
+	at net.minecraft.server.management.PlayerList.func_72375_a(PlayerList.java:285)
+	...
+
+
+"Server Infinisleeper" Id=16 TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at net.minecraft.server.dedicated.DedicatedServer$1.run(DedicatedServer.java:78)
+
+
+"Snooper Timer" Id=15 TIMED_WAITING on java.util.TaskQueue@283d6d2f
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.util.TaskQueue@283d6d2f
+	at java.util.TimerThread.mainLoop(Unknown Source)
+	at java.util.TimerThread.run(Unknown Source)
+
+
+"NonBlockingInputStreamThread" Id=13 WAITING on jline.internal.NonBlockingInputStream@dcd02b7 owned by "Server console handler" Id=20
+	at java.lang.Object.wait(Native Method)
+	-  waiting on jline.internal.NonBlockingInputStream@dcd02b7
+	at jline.internal.NonBlockingInputStream.run(NonBlockingInputStream.java:275)
+	at java.lang.Thread.run(Unknown Source)
+
+
+"Attach Listener" Id=5 RUNNABLE
+
+
+"Signal Dispatcher" Id=4 RUNNABLE
+
+
+"Finalizer" Id=3 RUNNABLE
+	at java.util.zip.Inflater.end(Native Method)
+	at java.util.zip.Inflater.end(Unknown Source)
+	-  locked java.util.zip.ZStreamRef@79249c3d
+	at java.util.zip.Inflater.finalize(Unknown Source)
+	at java.lang.System$2.invokeFinalize(Unknown Source)
+	at java.lang.ref.Finalizer.runFinalizer(Unknown Source)
+	at java.lang.ref.Finalizer.access$100(Unknown Source)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+
+"Reference Handler" Id=2 WAITING on java.lang.ref.Reference$Lock@1c19f114
+	at java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.Reference$Lock@1c19f114
+	at java.lang.Object.wait(Unknown Source)
+	at java.lang.ref.Reference.tryHandlePending(Unknown Source)
+	at java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+
+
+Stacktrace:
+	at net.minecraft.server.dedicated.ServerHangWatchdog.run(ServerHangWatchdog.java:63)
+	at java.lang.Thread.run(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.11.2
+	Operating System: Windows 8.1 (amd64) version 6.3
+	Java Version: 1.8.0_111, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 459338392 bytes (438 MB) / 1058537472 bytes (1009 MB) up to 1058537472 bytes (1009 MB)
+	JVM Flags: 2 total; -Xms1G -Xmx1G
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.38 Powered by Forge 13.20.0.2227 6 mods loaded, 6 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+	UCHIJAAAA	minecraft{1.11.2} [Minecraft] (minecraft.jar) 
+	UCHIJAAAA	mcp{9.19} [Minecraft Coder Pack] (minecraft.jar) 
+	UCHIJAAAA	FML{8.0.99.99} [Forge Mod Loader] ([Forge]1.11.2-13.20.0.2227_Core.jar) 
+	UCHIJAAAA	forge{13.20.0.2227} [Minecraft Forge] ([Forge]1.11.2-13.20.0.2227_Core.jar) 
+	UCHIJAAAA	spongeapi{6.0.0-SNAPSHOT-1962b5d} [SpongeAPI] (spongeforge-1.11.2-2227-6.0.0-BETA-2176.jar) 
+	UCHIJAAAA	sponge{1.11.2-2227-6.0.0-BETA-2176} [SpongeForge] (spongeforge-1.11.2-2227-6.0.0-BETA-2176.jar) 
+	Loaded coremods (and transformers): 
+SpongeCoremod (spongeforge-1.11.2-2227-6.0.0-BETA-2176.jar)
+  org.spongepowered.common.launch.transformer.SpongeSuperclassTransformer
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 20; [EntityPlayerMP['JOG1'/458, l='DIM-1', x=17.63, y=61.00, z=-7.50]]
+	Is Modded: Definitely; Server brand changed to 'fml,forge,sponge'
+	Type: Dedicated Server (map_server.txt)
